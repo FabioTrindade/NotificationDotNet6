@@ -1,7 +1,13 @@
-﻿var builder = WebApplication.CreateBuilder(args);
+﻿using Microsoft.EntityFrameworkCore;
+using NotificationDotNet6.Infra.Contexts;
+
+var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddDbContext<NotificationDataContext>(options
+    => options.UseSqlite(builder.Configuration.GetConnectionString("NotificationConnection"),
+    m => m.MigrationsHistoryTable("NotificationMigrations")));
 
 var app = builder.Build();
 

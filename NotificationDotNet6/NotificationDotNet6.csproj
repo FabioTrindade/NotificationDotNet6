@@ -11,5 +11,27 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="wwwroot\lib\notification\" />
+    <Folder Include="Domain\" />
+    <Folder Include="Domain\Entities\" />
+    <Folder Include="Domain\Dtos\" />
+    <Folder Include="Domain\Abstracts\" />
+    <Folder Include="Infra\" />
+    <Folder Include="Infra\Contexts\" />
+    <Folder Include="Infra\Mappings\" />
+    <Folder Include="Extensions\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Domain\" />
+    <None Remove="Domain\Entities\" />
+    <None Remove="Domain\Dtos\" />
+    <None Remove="Domain\Abstracts\" />
+    <None Remove="Infra\" />
+    <None Remove="Infra\Contexts\" />
+    <None Remove="Microsoft.EntityFrameworkCore.Sqlite" />
+    <None Remove="Infra\Mappings\" />
+    <None Remove="Extensions\" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="6.0.11" />
   </ItemGroup>
 </Project>
