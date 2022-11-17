@@ -31,14 +31,12 @@ public record Notification : Entity
 
 	public string Body { get; private set; }
 
-	public bool IsRead { get; set; }
+	public bool IsRead { get; private set; }
 
-	public string Url { get; set; }
+	public string Url { get; private set; }
 
     // Relationship
     public Guid FromUserId { get; private set; }
-    public virtual User FromUser { get; private set; }
-
     public Guid ToUserId { get; private set; }
-    public virtual User ToUser { get; private set; }
+    public virtual User User { get; private set; }
 }

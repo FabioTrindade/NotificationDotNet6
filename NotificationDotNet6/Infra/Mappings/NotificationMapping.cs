@@ -14,19 +14,16 @@ internal class NotificationMapping : DbEntityConfiguration<Notification>
         entityBuilder.Property(t => t.CreatedAt).IsRequired().HasColumnType("DATETIME");
         entityBuilder.Property(t => t.UpdatedAt).HasColumnType("DATETIME");
         entityBuilder.Property(t => t.Active).IsRequired().HasColumnType("BIT").HasDefaultValueSql("1");
-        entityBuilder.Property(t => t.Header).IsRequired().HasColumnType("VARCHAR(MAX)");
-        entityBuilder.Property(t => t.Body).IsRequired().HasColumnType("VARCHAR(MAX)");
+        entityBuilder.Property(t => t.Header).IsRequired().HasColumnType("TEXT");
+        entityBuilder.Property(t => t.Body).IsRequired().HasColumnType("TEXT");
         entityBuilder.Property(t => t.IsRead).IsRequired().HasColumnType("BIT").HasDefaultValueSql("0");
-        entityBuilder.Property(t => t.Url).IsRequired().HasColumnType("VARCHAR(MAX)");
+        entityBuilder.Property(t => t.Url).IsRequired().HasColumnType("TEXT");
 
-        entityBuilder.HasOne(fu => fu.FromUser)
+        entityBuilder.HasOne(u => u.User)
             .WithMany(n => n.Notifications)
             .HasForeignKey(fk => fk.FromUserId)
-            .OnDelete(DeleteBehavior.Restrict);
-
-        entityBuilder.HasOne(to => to.ToUser)
-            .WithMany(n => n.Notifications)
             .HasForeignKey(fk => fk.ToUserId)
+            .HasConstraintName("Fk_User_Notifications_Id")
             .OnDelete(DeleteBehavior.Restrict);
     }
 }
