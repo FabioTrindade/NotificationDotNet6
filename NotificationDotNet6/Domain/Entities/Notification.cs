@@ -14,14 +14,12 @@ public record Notification : Entity
         Guid toUserId,
         string header,
         string body,
-        bool isRead,
         string url)
     {
         FromUserId = fromUserId;
         ToUserId = toUserId;
         Header = header;
         Body = body;
-        IsRead = isRead;
         Url = url;
     }
 
@@ -37,6 +35,8 @@ public record Notification : Entity
 
     // Relationship
     public Guid FromUserId { get; private set; }
+
     public Guid ToUserId { get; private set; }
+
     public virtual User User { get; private set; }
 }

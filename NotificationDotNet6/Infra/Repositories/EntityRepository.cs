@@ -1,4 +1,5 @@
-﻿using Microsoft.Data.Sqlite;
+﻿using System.Linq.Expressions;
+using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
 using NotificationDotNet6.Domain.Abstracts;
 using NotificationDotNet6.Domain.Repositories;
@@ -40,17 +41,27 @@ public class EntityRepository<TEntity> : IEntityRepository<TEntity> where TEntit
         return await _dbSet.ToListAsync();
     }
 
+    public virtual async Task<IEnumerable<TEntity>> GetAll(Expression<Func<TEntity, bool>> predicate)
+    {
+        return await _dbSet.AsNoTracking().Where(predicate).ToListAsync();
+    }
+
+    public virtual async Task<TEntity> Get(Expression<Func<TEntity, bool>> predicate)
+    {
+        return await _dbSet.AsNoTracking().Where(predicate)?.FirstOrDefaultAsync();
+    }
+
     public virtual async Task<TEntity> GetById(Guid id)
     {
         return await _dbSet.AsNoTracking().FirstAsync(t => t.Id == id);
     }
 
-    public Task<List<T>> QueryAsync<T>(string query, object parameter = null)
+    public Task<List<T>> QueryAsync<T>(string query, object? parameter = null)
     {
         throw new NotImplementedException();
     }
 
-    public Task<T> QueryFirstAsync<T>(string query, object parameter = null)
+    public Task<T> QueryFirstAsync<T>(string query, object? parameter = null)
     {
         throw new NotImplementedException();
     }

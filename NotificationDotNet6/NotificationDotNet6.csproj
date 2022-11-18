@@ -22,6 +22,12 @@
     <Folder Include="Service\" />
     <Folder Include="Infra\Repositories\" />
     <Folder Include="Domain\Repositories\" />
+    <Folder Include="Services\" />
+    <Folder Include="Domain\Services\" />
+    <Folder Include="Domain\Contracts\" />
+    <Folder Include="Domain\Commands\" />
+    <Folder Include="Domain\Commands\User\" />
+    <Folder Include="Domain\Commands\Notification\" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="Domain\" />
@@ -37,6 +43,12 @@
     <None Remove="Service\" />
     <None Remove="Infra\Repositories\" />
     <None Remove="Domain\Repositories\" />
+    <None Remove="Services\" />
+    <None Remove="Domain\Services\" />
+    <None Remove="Domain\Contracts\" />
+    <None Remove="Domain\Commands\" />
+    <None Remove="Domain\Commands\User\" />
+    <None Remove="Domain\Commands\Notification\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="6.0.11" />
