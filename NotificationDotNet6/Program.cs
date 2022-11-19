@@ -1,7 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using NotificationDotNet6.Domain.Repositories;
+using NotificationDotNet6.Domain.Services;
 using NotificationDotNet6.Infra.Contexts;
 using NotificationDotNet6.Infra.Repositories;
+using NotificationDotNet6.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,6 +17,8 @@ builder.Services.AddDbContext<NotificationDataContext>(options
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<INotificationRepository, NotificationRepository>();
 
+builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<INotificationService, NotificationService>();
 
 var app = builder.Build();
 

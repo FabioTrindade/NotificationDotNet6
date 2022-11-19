@@ -28,6 +28,9 @@
     <Folder Include="Domain\Commands\" />
     <Folder Include="Domain\Commands\User\" />
     <Folder Include="Domain\Commands\Notification\" />
+    <Folder Include="Views\Notification\" />
+    <Folder Include="Views\Module\" />
+    <Folder Include="Views\User\" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="Domain\" />
@@ -49,6 +52,9 @@
     <None Remove="Domain\Commands\" />
     <None Remove="Domain\Commands\User\" />
     <None Remove="Domain\Commands\Notification\" />
+    <None Remove="Views\Notification\" />
+    <None Remove="Views\Module\" />
+    <None Remove="Views\User\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="6.0.11" />

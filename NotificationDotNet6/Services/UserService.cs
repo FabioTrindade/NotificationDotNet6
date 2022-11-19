@@ -15,6 +15,12 @@ public class UserService : IUserService
         _userRepository = userRepository;
     }
 
+    public async Task<GenericCommandResult> GetAll()
+    {
+        var result = await _userRepository.GetAll();
+        return new GenericCommandResult(true, "", result);
+    }
+
     public async Task<GenericCommandResult> Handle(UserCreateCommand command)
     {
         var user = new User(command.Name);

@@ -1,0 +1,42 @@
+﻿@model List<Notification>
+
+@{
+    ViewData["Title"] = "Notification";
+}
+
+<h1>@ViewData["Title"]</h1>
+<a class="btn btn-success" asp-controller="Notification" asp-action="Create"> Create </a>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Header</th>
+            <th>Body</th>
+            <th>IsRead</th>
+            <th>Url</th>
+            <th>FromUserId</th>
+            <th>ToUserId</th>
+            <th>CreatedAt</th>
+            <th>UpdatedAt</th>
+            <th>Active</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var notification in Model)
+        {
+            <tr>
+                <td>@notification.Id</td>
+                <td>@notification.Header</td>
+                <td>@notification.Body</td>
+                <td>@notification.IsRead</td>
+                <td>@notification.Url</td>
+                <td>@notification.FromUserId</td>
+                <td>@notification.ToUserId</td>
+                <td>@notification.CreatedAt.ToString("dd/MM/yyyy HH:mm:ss")</td>
+                <td>@notification.UpdatedAt?.ToString("dd/MM/yyyy HH:mm:ss")</td>
+                <td>@notification.Active</td>
+            </tr>
+        }
+    </tbody>
+</table>

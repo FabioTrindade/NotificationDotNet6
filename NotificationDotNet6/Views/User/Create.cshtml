@@ -1,0 +1,31 @@
+﻿@model NotificationDotNet6.Domain.Commands.User.UserCreateCommand
+
+@{
+    ViewData["Title"] = "User Create";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+@using (Html.BeginForm("Create", "User", FormMethod.Post, new { id = "frmUserCreate" }))
+{
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3 class="modal-title">@ViewData["Title"]</h3>
+        </div>
+        <div class="modal-body">
+            <div class="row">
+                <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Name)
+                        @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="modal-footer justify-content-between">
+            <button type="button" id="btn-cancel" value="cencel" class="btn btn-danger">Voltar</button>
+            <button type="submit" id="btn-create" value="create" class="btn btn-primary">Salvar</button>
+        </div>
+    </div>
+}
