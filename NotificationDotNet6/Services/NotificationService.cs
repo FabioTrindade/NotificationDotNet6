@@ -25,7 +25,7 @@ public class NotificationService : INotificationService
 
     public async Task<GenericCommandResult> Handle(NotificationGetUserIdUnreadCommand command)
     {
-        var result = await _notificationRepository.GetAll(w => w.ToUserId == command.UserId && w.IsRead == command.Unread);
+        var result = await _notificationRepository.GetAll(command.UserId, command.Unread);
 
         return new GenericCommandResult(true, "", result);
     }

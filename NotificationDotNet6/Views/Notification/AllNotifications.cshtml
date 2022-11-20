@@ -1,4 +1,9 @@
-﻿
+﻿@{
+    ViewData["Title"] = "Notification for My";
+}
+
+<h1>@ViewData["Title"]</h1>
+
 <table id="tblNotification" class="table table-bordered table-striped">
     <thead>
         <tr>
@@ -13,25 +18,28 @@
     </tbody>
 </table>
 
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
 <script type="text/javascript">
     $(document).ready(function () {
         $.ajax({
             type: 'GET',
             dataType: 'json',
-            url: '/Notification/GetNotifications',
+            url: '/Notification/GetAllNotifications',
             traditional: true,
             contentType: 'application/json; charset=utf-8',
             success: function (data) {
                 var notifications = data;
                 $.map(notifications, function (notification) {
-                    $('tblNotification tbody').append("<tr>" +
-                        + "<td>" + notification.fromUserName + "</td>"
-                        + "<td>" + notification.header + "</td>"
-                        + "<td>" + notification.body + "</td>"
-                        + "<td>" + notification.isRead + "</td>"
-                        + "<td>" + notification.createdAt + "</td>"
-                        + "</tr>"
-                    );
+                    let tbody = `
+                    <tr>
+                        <td>${notification.fromUserName}</td>
+                        <td>${notification.header}</td>
+                        <td>${notification.body}</td>
+                        <td>${notification.isReadSt}</td>
+                        <td>${notification.createdDate}</td>
+                    <tr>`;
+
+                    $('#tblNotification tbody').append(tbody);
                 });
             },
             error: function (xhr, status, error) {

@@ -35,14 +35,22 @@ public class NotificationController : Controller
     }
 
     [HttpGet]
-    public async Task<IActionResult> AllNotifications()
+    public ActionResult AllNotifications()
     {
-        var result = await _notificationService.GetAll();
-        return View(result.Data);
+        return View();
     }
 
     [HttpGet]
     public async Task<JsonResult> GetNotifications()
+    {
+        var request = new NotificationGetUserIdUnreadCommand { UserId = new Guid("3542838E-226D-4C34-A7F4-8E7EC3EB4A18"), Unread = false };
+        var result = await _notificationService.Handle(request);
+
+        return Json(result.Data);
+    }
+
+    [HttpGet]
+    public async Task<JsonResult> GetAllNotifications()
     {
         var request = new NotificationGetUserIdUnreadCommand { UserId = new Guid("3542838E-226D-4C34-A7F4-8E7EC3EB4A18"), Unread = false };
         var result = await _notificationService.Handle(request);
